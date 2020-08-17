@@ -4,7 +4,8 @@ chmod +x battery
 
 if sudo cp battery /usr/local/bin/
 then
-        echo  -n ">"
+        echo "checking...."
+        echo  ">"
         sleep 1
         echo  -n ">"
         sleep 2
@@ -23,7 +24,9 @@ then
         echo  ">"
         sleep .4
         echo "HALF OF INSTALLATION DONE"
-        sleep
+        sleep 1
+        echo "##############################"
+        sudo apt install zenity acpi
 else
     echo "Run as Sudoer or root to install"
 
