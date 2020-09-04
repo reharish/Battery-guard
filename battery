@@ -1,49 +1,34 @@
 #!/bin/bash
-
+echo "Battery Guard 2.0"
+echo
+echo "###############################"
+echo "#- Info !!! Leave it running -#"
+echo "###############################"
 charge='Charging'
 discharge='Discharging'
 
-if zenity --question --text "Activate Battery Indicator? by Harish" --title "Battery Guard"
-then
-	battery_level=`acpi -b | grep -P -o '[0-9]+(?=%)'`
-	
-	echo "#############################" >> battery.log
-	echo "Battery indicator initialized" >> battery.log
-	
-	date >> battery.log
-	battery_perc=`acpi -b | grep -P -o '[0-9%]+(?=,)'`
-	echo $battery_perc >> battery.log
-	echo "" >> battery.log 
-	echo "#############################" >> battery.log
-	notify-send "Battery Guard activated $battry_level %"
-	while true
-	do
-	    battery_level=`acpi -b | grep -P -o '[0-9]+(?=%)'`
-	    state=`acpi -b | grep -P -o '[A-Za-z]+(?=,)'`
-	    if [ $battery_level -ge 94 ]; then
-	    	if [ $state == $charge]; then
-	    	
-	       	notify-send "Battery sufficiently Charged! please unplug the charger" "$state: ${battery_level}%" 
-	       	date >> battery.log
-	       	echo $state >> battery.log
-	       	battery_perc=`acpi -b | grep -P -o '[0-9%]+(?=,)'`
-	       	echo $battery_perc >> battery.log
-	       	echo "Battery sufficiently Charged! please unplug the charger" >> battery.log
-	       	echo "" >> battery.log 
-	        fi 
-	    elif [ $battery_level -le 30 ]; then
-	       state=`acpi -b | grep -P -o '[A-Za-z]+(?=,)'`
-	       date >> battery.log
-	       echo $state >> battery.log	
-	       battery_perc=`acpi -b | grep -P -o '[0-9%]+(?=,)'`
-	       echo $battery_perc >> battery.log
-	       notify-send "Battery Low!" "$state: ${battery_level}%"
-	       echo "Battery losing Charge!" >> battery.log
-	       echo "" >> battery.log    
-	    fi
+while true
+do
+	StrBat=$(acpi | cut -d " " -f 4 | cut -d "%" -f 1)
+	state=$(acpi | grep -P -o '[A-Za-z]+(?=,)')
+	intStr=$(expr $StrBat)
+	if [ $state == $charge ] ;
+	then
+		if [ $intStr -ge 95 ] ;
+		then
+			for i in `seq 1 5` ; 
+			do
+				StrBat=$(acpi | cut -d " " -f 4 | cut -d "%" -f 1)
 
-	    sleep 450 # 300 seconds or 5 minutes
-	done
-fi
-
-exit 1
+				intStr=$(expr $StrBat)
+				
+				notify-send "Battery sufficiently Charged! $intStr "
+				
+				sleep 200
+			done
+			break
+		
+		fi
+	fi
+	sleep 300
+done
