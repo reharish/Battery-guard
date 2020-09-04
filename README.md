@@ -5,7 +5,7 @@ run install.sh code as root or sudoers
  bash install.sh
 This command copy the script to PATH variable of linux
 # Working
-After that,type 'battery' anywhere in terminal
+After that,type `battery` anywhere in terminal
 click yes and minimize the terminal the script will run as long the terminal opens
 # ADDITIONALS
 open cloned folder
@@ -17,3 +17,4 @@ run a python script by
 `python3 batt.sh`
 
 
+Note: Scripted and Tested on Lenovo E41-25 running ubuntu 20.04 stable 
