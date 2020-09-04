@@ -1,11 +1,17 @@
 #!/bin/bash
 
 chmod +x battery
+if test -f /usr/local/bin/battery;then
 
-if sudo cp battery /usr/local/bin/
-then
+    echo " Already Initialized"
+    
+    echo "Type battery to start"
+    
+    
+else
+
+    if sudo cp battery /usr/local/bin/;then
         echo "checking...."
-        echo  ">"
         sleep 1
         echo  -n ">"
         sleep 2
@@ -27,8 +33,11 @@ then
         sleep 1
         echo "##############################"
         sudo apt install zenity acpi
-else
-    echo "Run as Sudoer or root to install"
+        
+        echo "##################################"
+        echo
+        echo
+        echo done
+     fi
 
 fi
-
