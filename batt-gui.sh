@@ -24,8 +24,8 @@ then
 	echo "###############################"
 	echo "    Battery-Pi 1.5.0  GUI        "
 	echo "###############################"
-	echo "    STARTED :: Battery Pi Started   " >> battery.log
-	date >> battery.log
+	echo "    STARTED :: Battery Pi Started   " >> $HOME/battery.log
+	date >> $HOME/battery.log
     while [ $state == $charge ];
     do
 	    Checking
@@ -41,7 +41,7 @@ then
 				    
 				    zenity --notification --text "sufficiently Charged $intStr % "
 				    zenity --warning --width 300 --height 30 --text "Battery : $intStr % \n \nProlonged Charging cause serious defect on battery and performance.\n \nplease unplug the charger"
-				    echo "SUCCESS :: sufficiently Charged $intStr % " >> battery.log
+				    echo "SUCCESS :: sufficiently Charged $intStr % " >> $HOME/battery.log
 				    sleep 20
 			    done
 			    break
@@ -50,7 +50,7 @@ then
 	    sleep 30
 	    else
 		
-		    date >> battery.log
+		    date >> $HOME/battery.log
 		    echo "charger unpluged !!!!"
 		    break
 	    	fi
