@@ -1,6 +1,10 @@
 # Battery-guard
 Battery Guard For Linux Laptops
-# installation
+# Installation
+**YouTube Tutorial**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/g9D9gAw4wxc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 run install.sh code as root or sudoers
 ` bash install.sh`
 This command copy the script to PATH variable of linux
