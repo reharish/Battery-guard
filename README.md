@@ -2,8 +2,10 @@
 Battery Guard For Linux Laptops
 # Installation
 **YouTube Tutorial**
-<html>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/g9D9gAw4wxc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></html>
+
+
+
+[![Battery Guard](https://i.ytimg.com/vi/g9D9gAw4wxc/hqdefault.jpg)](https://www.youtube.com/embed/g9D9gAw4wxc "Link")
 
 run install.sh code as root or sudoers
 ` bash install.sh`
