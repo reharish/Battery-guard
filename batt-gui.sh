@@ -34,7 +34,10 @@ then
 		    if [ $intStr -ge 93 ] ;
 		    then
 			    for i in `seq 1 5` ; 
-			    do
+			    do	
+			    	Checking
+			    	 if [ $state == $charge ] ;
+				 then
 				    StrBat=$(acpi | cut -d " " -f 4 | cut -d "%" -f 1)
                     
 				    intStr=$(expr $StrBat)
@@ -43,6 +46,7 @@ then
 				    zenity --warning --width 300 --height 30 --text "Battery : $intStr % \n \nProlonged Charging cause serious defect on battery and performance.\n \nplease unplug the charger"
 				    echo "SUCCESS :: sufficiently Charged $intStr % " >> $HOME/battery.log
 				    sleep 20
+				   fi
 			    done
 			    break
 		   
