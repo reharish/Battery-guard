@@ -1,9 +1,11 @@
 # Battery-guard
-Battery Guard For Linux Laptops
+Battery Guard For Linux Laptops.
+
+Lithium-ion or lithium polymer batteries have certain life-cycles (i.e.,300 times 0% to 100% and 100% to 0%) by maintaining a battery between 15% to 90% leads to good battery life.Battery guard is a simple Shell script which protects laptop battery and gives long battery life by notifying user frequently about battery state while charging continuously for a prolonged period.
+# Requirements
+  * ACPI (Advanced Configuration and Power Interface) pakage
 # Installation
 **YouTube Tutorial**
-
-
 
 [![Battery Guard](https://i.ytimg.com/vi/g9D9gAw4wxc/hqdefault.jpg)](https://www.youtube.com/watch?v=g9D9gAw4wxc "Link")
 
@@ -29,7 +31,9 @@ you can run batt.sh by
 **Python3**
 run a python script by
 `python3 batt.py`
-
+**on the go version**
+run battery-lite shell script
+`bash battery-lite`
 
 
 Note: Scripted and Tested on Lenovo E41-25 running ubuntu 20.04 stable 
