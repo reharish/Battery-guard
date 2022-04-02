@@ -13,7 +13,7 @@ run install.sh code as root or sudoers
 ` bash install.sh`
 This command copy the script to PATH variable of linux
 
-# Working
+## Usage
 
 **GUI(Graphical version 1.5.0)**
 Type `bat` anywhere in terminal.which is optimized with gui `zenity`
@@ -23,8 +23,7 @@ minimize the terminal the script will run as long the terminal opens
 Type `batt.py` anywhere in terminal.the script is written in `python3`
 minimize the terminal the script will run as long the terminal opens
 
-# ADDITIONALS
-open cloned folder
+## Additionals
 **Bash**
 you can run batt.sh by
 `bash batt.sh`
@@ -36,4 +35,4 @@ run battery-lite shell script
 `bash battery-lite`
 
 
-Note: Scripted and Tested on Lenovo E41-25 running ubuntu 20.04 stable 
+Note: Scripted and Tested on ubuntu 20.04 stable 
