@@ -1,9 +1,11 @@
 #!/bin/bash
+
 echo "Battery Guard 2.0"
 echo
 echo "###############################"
-echo "#- Info !!! Leave it running -#"
+echo "#- Leave it running -#"
 echo "###############################"
+
 charge='Charging'
 discharge='Discharging'
 
