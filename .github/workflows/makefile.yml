@@ -26,6 +26,6 @@ jobs:
     - name: Artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: Apk
+        name: Deb Package
         Path: battery-guard*.deb
         retention-days: 5
