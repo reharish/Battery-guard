@@ -23,3 +23,9 @@ jobs:
     - name: Make Deb
       run: make deb
       
+    - name: Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: Apk
+        Path: battery-guard*.deb
+        retention-days: 5
