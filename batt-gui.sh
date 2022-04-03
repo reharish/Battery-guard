@@ -1,5 +1,11 @@
 #!/bin/bash
 
+######################################
+# Name : Battery Guard GUI
+# Author : @reharish
+# Description : Protects laptop Battery from excessive charging.
+######################################
+
 zenity --info --width 400 --height 50 --title "Battery Pi" --text "GUI-Version : 1.4.1 \n Script : reharish(github) \n \nThe script protects laptop battery and give long battery life by notify user frequently about battery state while charging it continuously."
 
 Checking()
