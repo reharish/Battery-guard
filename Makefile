@@ -25,9 +25,7 @@ deb: build
 		-d zenity				\
 		--url "https://reharish.github.io/cv"           		\
 		--description "$(description)"        		\
-		--after-install deb_script/postinst.sh 	\
-		--after-remove deb_script/postrm.sh	\
-		.
+		.		.
 
 clean:
 	rm -f *~

@@ -8,7 +8,6 @@ checking_pid()
 }
 
 
-
 if [ "$#" -eq 0 ]
 then
     if checking_pid
