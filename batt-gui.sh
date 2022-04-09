@@ -3,10 +3,22 @@
 ######################################
 # Name : Battery Guard GUI
 # Author : @reharish
-# Description : Protects laptop Battery from excessive charging.
+# Description : Protects laptop Battery
+#               from excessive charging.
 ######################################
 
-zenity --info --width 400 --height 50 --title "Battery Pi" --text "GUI-Version : 1.4.1 \n Script : reharish(github) \n \nThe script protects laptop battery and give long battery life by notify user frequently about battery state while charging it continuously."
+VERSION="1.4.1"
+LOG_FILE="$HOME/.battery-guard.log"
+
+if ! [ -f $LOG_FILE ]
+then
+    touch $LOG_FILE
+    zenity --info --width 400 --height 50 --title "Battery Pi" --text "GUI-Version : $VERSION \n Script : reharish(github) \n \nThe script protects laptop battery and give long battery life by notify user frequently about battery state while charging it continuously."
+    echo "Battery Guard Initiated" >> $LOG_FILE
+    date >> $LOG_FILE
+    echo "###########"
+fi
+
 
 Checking()
 {
@@ -19,47 +31,53 @@ Checking()
 
 Checking
 if [ $state == $discharge ];
-then    
-    zenity --warning --width 300 --height 50 --text "Battery : $intStr % \n \nPlease CONNECT to Power and RUN again"
-    echo "WARNING :: Please connect to Power"
-elif zenity --question --width 300 --height 30 --title "Confirm" --text "This script will run in background it will consume less than 4MB of RAM \n \n continue ?"
 then
-    zenity --notification --text "    Battery-Pi Successfully Started   "
+    zenity --warning --width 300 --height 50 --text "Battery : $intStr % \n \nPlease CONNECT to Power and RUN again"
+    date >> $LOG_FILE
+    echo "WARNING :: Charger not Connected" >> $LOG_FILE
+    exit 1
+elif zenity --question --width 300 --height 30 --title "Confirm" --text "This script will run in background it will consume less than 4MB of RAM \n \n continue ?/"
+then
+    zenity --notification --text "Battery-Pi Successfully Started"
     echo "###############################"
-    echo "    Battery-Pi 1.5.0  GUI        "
+    echo "    Battery-Pi $version  GUI        "
     echo "###############################"
-    echo "    STARTED :: Battery Pi Started   " >> $HOME/battery.log
-    date >> $HOME/battery.log
+    echo "STARTED :: Battery Pi Started   " >> $LOG_FILE
+    date >> $LOG_FILE
+
     while [ $state == $charge ];
     do
 	Checking
 	if [ $state == $charge ] ;
+	then
+	    if [ $intStr -ge 93 ] ;
 	    then
-		if [ $intStr -ge 93 ] ;
-		then
-		    for i in `seq 1 5` ; 
-		    do	
+		for i in `seq 1 5` ;
+		    do
 			Checking
 			if [ $state == $charge ] ;
 			then
 			    StrBat=$(acpi | cut -d " " -f 4 | cut -d "%" -f 1)
-				     
+
 			    intStr=$(expr $StrBat)
-			    
+
 			    zenity --notification --text "sufficiently Charged $intStr % "
 			    zenity --warning --width 300 --height 30 --text "Battery : $intStr % \n \nProlonged Charging cause serious defect on battery and performance.\n \nplease unplug the charger"
-			    echo "SUCCESS :: sufficiently Charged $intStr % " >> $HOME/battery.log
+			    echo "SUCCESS :: sufficiently Charged $intStr % " >> $LOG_FILE
 			    sleep 20
 			fi
-		    done
-		    break
-		    
-		fi
-		sleep 30
-	else		
-	    date >> $HOME/battery.log
+		done
+		break
+
+	    fi
+	else
+	    date >> $LOG_FILE
 	    echo "Charger unpluged !!!!"
 	    break
-	    fi
-    done  
+	fi
+	sleep 30
+	checking
+    done
 fi
+echo "Hii"
+exit 0

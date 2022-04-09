@@ -1,5 +1,5 @@
 Name = battery-guard
-version = 1.5.0+Linux+All
+version = 1.4.1+ubuntu+All
 description = Protect Laptop battery from Excessive Charging.
 
 install_dir = /usr/share/battery-guard
