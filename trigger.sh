@@ -5,10 +5,11 @@
 VERSION="1.4.1"
 LOG_FILE="$HOME/.battery-guard.log"
 
-if ! [ -d $BATTERY_GUARD_HOME ]
+if [[ -z ${BATTERY_GUARD_HOME} ]]
 then
-    BATTERY_GUARD_HOME="/usr/share/battery-guard"
+    export BATTERY_GUARD_HOME="/usr/share/battery-guard"
 fi
+
 
 help_text()
 {
@@ -68,7 +69,7 @@ then
     less $LOG_FILE
 
 else
-    printf "Invalid Options\n"
+    printf "Invalid Argument\n"
     help_text
 fi
 exit 0
