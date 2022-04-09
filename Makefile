@@ -2,19 +2,16 @@ Name = battery-guard
 version = 1.4.1+ubuntu+All
 description = Protect Laptop battery from Excessive Charging.
 
-install_dir = /usr/share/battery-guard
-exe_dir =/usr/local/bin
+install_dir = /usr/share/$(Name)
+exe_dir = /usr/local/bin
 
 build:
-	mkdir build/
-	mkdir -p build/$(install_dir)
-	mkdir -p build/$(exe_dir)
-	cp -a batt-gui.sh build/$(install_dir)/battery-guard-gui
-	cp -a batt.sh build/$(install_dir)/battery-guard-cli
-	cp -a LICENSE README.md trigger.sh build/$(install_dir)/
-	chmod +x build/$(install_dir)/*.sh
-	cp -a trigger.sh build/$(exe_dir)/battery-guard
-	chmod +x build/$(exe_dir)/battery-guard
+	mkdir -p ./build/$(install_dir)
+	mkdir -p ./build/$(exe_dir)
+	cp batt-gui.sh ./build/$(install_dir)/$(Name)-gui
+	cp batt.sh ./build/$(install_dir)/$(Name)-cli
+	cp LICENSE ./build/$(install_dir)/
+	cp trigger.sh ./build/$(exe_dir)/$(Name)
 
 deb: build
 	fpm -s dir -t deb -n $(Name)				\
@@ -25,8 +22,12 @@ deb: build
 		-d zenity				\
 		--url "https://reharish.github.io/cv"           		\
 		--description "$(description)"        		\
-		.		.
+		--after-install script/install.sh 	\
+		--after-remove script/remove.sh	\
+		.
 
 clean:
 	rm -f *~
 	rm -rf build/
+	rm -f *.deb
+	rm -f build.tar
