@@ -32,7 +32,7 @@ then
     then
 	echo "Already Runing"
     else
-	if $BATTERY_GUARD_HOME/battery-guard-gui  2>/dev/null
+	if $BATTERY_GUARD_HOME/battery-guard-gui 2& >/dev/null
 	then
 	    echo "Started"
 	    exit 0

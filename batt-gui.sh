@@ -3,8 +3,9 @@
 ######################################
 # Name : Battery Guard GUI
 # Author : @reharish
-# Description : Protects laptop Battery
-#               from excessive charging.
+# Description : Build over Zenity
+#             Protects laptop Battery
+#             from excessive charging.
 ######################################
 
 VERSION="1.4.1"
@@ -38,11 +39,8 @@ then
     exit 1
 elif zenity --question --width 300 --height 30 --title "Confirm" --text "This script will run in background it will consume less than 4MB of RAM \n \n continue ?/"
 then
-    zenity --notification --text "Battery-Pi Successfully Started"
-    echo "###############################"
-    echo "    Battery-Pi $version  GUI        "
-    echo "###############################"
-    echo "STARTED :: Battery Pi Started   " >> $LOG_FILE
+    zenity --notification --text "Battery-Guard Successfully Started"
+    echo "STARTED :: Battery Guard Started   " >> $LOG_FILE
     date >> $LOG_FILE
 
     while [ $state == $charge ];
@@ -61,9 +59,9 @@ then
 
 			    intStr=$(expr $StrBat)
 
-			    zenity --notification --text "sufficiently Charged $intStr % "
+			    zenity --notification --text "Sufficiently Charged $intStr % "
 			    zenity --warning --width 300 --height 30 --text "Battery : $intStr % \n \nProlonged Charging cause serious defect on battery and performance.\n \nplease unplug the charger"
-			    echo "SUCCESS :: sufficiently Charged $intStr % " >> $LOG_FILE
+			    echo "SUCCESS :: Sufficiently Charged $intStr % " >> $LOG_FILE
 			    sleep 20
 			fi
 		done
@@ -79,5 +77,5 @@ then
 	checking
     done
 fi
-echo "Hii"
+
 exit 0

@@ -12,7 +12,7 @@ Lithium-ion or lithium polymer batteries have certain life-cycles (i.e.,300 time
  1. Clone the git repo:
 
     $ git clone https://github.com/reharish/Battery-guard
-    $ cd zdeck
+    $ cd Battery-guard
 
   2. Create the debian package.
 
