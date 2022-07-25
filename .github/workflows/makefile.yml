@@ -1,15 +1,10 @@
 name: Makefile CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+on: [workflow_dispatch]
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
+    
 
     steps:
     - uses: actions/checkout@v3
