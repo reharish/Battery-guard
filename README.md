@@ -1,6 +1,8 @@
 # Battery-guard
 Battery Guard For Linux Laptops.
 
+[![Debian Package](https://github.com/reharish/Battery-guard/actions/workflows/makefile.yml/badge.svg)](https://github.com/reharish/Battery-guard/actions/workflows/makefile.yml)
+
 Lithium-ion or lithium polymer batteries have certain life-cycles (i.e.,300 times 0% to 100% and 100% to 0%) by maintaining a battery between 15% to 90% leads to good battery life.Battery guard is a simple Shell script which protects laptop battery and gives long battery life by notifying user frequently about battery state while charging continuously for a prolonged period.
 
 ### requirements
