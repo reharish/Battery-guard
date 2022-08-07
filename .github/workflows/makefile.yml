@@ -1,4 +1,4 @@
-name: Makefile CI
+name: Debian Package
 
 on: [workflow_dispatch]
 jobs:
